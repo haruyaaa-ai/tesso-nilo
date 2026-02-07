@@ -3,7 +3,8 @@
 ## 📋 PROJECT OVERVIEW
 
 **Nama Proyek**: Taman Nasional Tesso Nilo - Sistem Manajemen Tiket & Berita  
-**Tanggal Selesai**: 22 Desember 2025  
+**Tanggal Selesai**: 7 Februari 2026  
+**Live Demo**: [tessoniloproject.my.id](http://tessoniloproject.my.id/)  
 **Status**: ✅ PRODUCTION READY
 
 ---
@@ -504,27 +505,26 @@ Sistem Taman Nasional Tesso Nilo telah diimplementasikan dengan lengkap sesuai s
 ---
 
 ## 📝 NEXT STEPS
+Sistem dapat diuji melalui link live atau local:
 
-1. **Setup Database**
-   - Akses: http://localhost/tessonilov3/api/init_db.php
+1. **Akses Live Demo**
+   - URL: [http://tessoniloproject.my.id/](http://tessoniloproject.my.id/)
 
 2. **Test Admin**
    - Login: admin / admin123
-   - URL: http://localhost/tessonilov3/login.html
+   - URL: http://tessoniloproject.my.id/login.html
 
 3. **Test Customer**
    - Register akun baru
    - Pesan tiket
    - Lihat booking history
 
-4. **Explore Features**
-   - Manage berita
-   - Export reports
-   - Update reservasi
-   - View statistics
+4. **Local Setup (Optional)**
+   - Akses: http://localhost/tessonilov3/api/init_db.php
+
 
 ---
 
-**Generated**: 22 Desember 2025  
+**Generated**: 7 Februari 2026  
 **Author**: Damar Satriatama Putra (23552011300)  
 **Status**: Production Ready ✅
