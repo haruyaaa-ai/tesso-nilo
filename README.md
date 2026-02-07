@@ -1,33 +1,111 @@
-# Taman Nasional Tesso Nilo - Sistem Manajemen Tiket & Berita
+# 🌿 Taman Nasional Tesso Nilo - Sistem Manajemen Tiket & Berita
 
-**Status**: ✅ Produksi Ready  
-**Version**: 1.0.0  
-**Last Updated**: 22 Desember 2025
+<div align="center">
 
-## 🚀 Quick Start (5 Menit)
+[![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)](#)
+[![Version](https://img.shields.io/badge/Version-1.1.0-blue)](#)
+[![PHP](https://img.shields.io/badge/PHP-7.4+-purple)](#)
+[![MySQL](https://img.shields.io/badge/MySQL-5.7+-orange)](#)
 
-### 1. Initialize Database
+**Sistem informasi lengkap untuk pengelolaan tiket wisata dan berita Taman Nasional Tesso Nilo**
+
+🔗 **Live Demo**: [**http://tessoniloproject.my.id/**](http://tessoniloproject.my.id/)
+
+</div>
+
+---
+
+## 📋 Deskripsi Proyek
+
+Sistem Manajemen Taman Nasional Tesso Nilo adalah aplikasi web full-stack yang menyediakan:
+- **Portal Informasi Publik** - Informasi tentang taman nasional, flora, fauna, dan berita terkini
+- **Sistem Pemesanan Tiket Online** - Memungkinkan pengunjung memesan tiket secara mandiri
+- **Dashboard Admin** - Pengelolaan berita, reservasi, dan laporan untuk administrator
+- **Integrasi Payment Gateway** - Mendukung pembayaran online via Midtrans
+
+Proyek ini dikembangkan sebagai bagian dari tugas akademik Program Studi Teknik Informatika.
+
+---
+
+## 🌐 Akses Live Demo
+
+| Halaman | URL | Keterangan |
+|---------|-----|------------|
+| 🏠 **Homepage** | [tessoniloproject.my.id](http://tessoniloproject.my.id/) | Halaman utama website |
+| 🔐 **Login** | [tessoniloproject.my.id/login.html](http://tessoniloproject.my.id/login.html) | Login admin/customer |
+| 📝 **Register** | [tessoniloproject.my.id/register.html](http://tessoniloproject.my.id/register.html) | Daftar akun baru |
+| 🎫 **Booking** | [tessoniloproject.my.id/booking.html](http://tessoniloproject.my.id/booking.html) | Pemesanan tiket |
+| 📊 **Dashboard** | [tessoniloproject.my.id/dashboard.html](http://tessoniloproject.my.id/dashboard.html) | Panel admin |
+| 📰 **Berita** | [tessoniloproject.my.id/berita.html](http://tessoniloproject.my.id/berita.html) | Daftar berita |
+| ℹ️ **About** | [tessoniloproject.my.id/about.html](http://tessoniloproject.my.id/about.html) | Tentang taman nasional |
+| 🐘 **Spesies** | [tessoniloproject.my.id/spesies.html](http://tessoniloproject.my.id/spesies.html) | Informasi flora & fauna |
+
+### 🔑 Kredensial Demo
+
+| Role | Username | Password | Akses |
+|------|----------|----------|-------|
+| **Admin** | `admin` | `admin123` | Dashboard, CRUD Berita, Kelola Reservasi, Export Laporan |
+| **Customer** | *(Daftar sendiri)* | - | Booking tiket, Lihat riwayat pemesanan |
+
+---
+
+## 🛠️ Technology Stack
+
+### Frontend
+| Teknologi | Kegunaan |
+|-----------|----------|
+| HTML5 | Struktur halaman |
+| CSS3 + Tailwind CSS | Styling & responsiveness |
+| JavaScript (Vanilla) | Interaktivitas & API calls |
+| Chart.js | Visualisasi data dashboard |
+| Lucide Icons | Ikon UI |
+
+### Backend
+| Teknologi | Kegunaan |
+|-----------|----------|
+| PHP 7.4+ | Server-side logic |
+| MySQL 5.7+ | Database management |
+| RESTful API | Komunikasi frontend-backend |
+| Session Management | Autentikasi pengguna |
+
+### Infrastruktur
+| Komponen | Detail |
+|----------|--------|
+| Web Server | Apache (XAMPP/Production) |
+| Domain | tessoniloproject.my.id |
+| SSL | HTTPS enabled |
+| Payment Gateway | Midtrans Integration |
+
+---
+
+## 🚀 Quick Start
+
+### Opsi 1: Akses Live (Recommended)
+Langsung akses website yang sudah live di:
+```
+🔗 http://tessoniloproject.my.id/
+```
+
+### Opsi 2: Setup Lokal (Development)
+
+#### Prerequisite
+- XAMPP (Apache + MySQL + PHP 7.4+)
+- Browser modern (Chrome, Firefox, Edge)
+
+#### Langkah Instalasi
 ```bash
-Browser: http://localhost/tessonilov3/api/init_db.php
-Expected: "Database initialized successfully"
-```
+# 1. Clone/Extract ke folder htdocs
+C:\xampp\htdocs\tessonilov3\
 
-### 2. Login sebagai Admin
-```
-URL: http://localhost/tessonilov3/login.html
+# 2. Start XAMPP (Apache & MySQL)
+
+# 3. Inisialisasi Database
+http://localhost/tessonilov3/api/init_db.php
+
+# 4. Login Admin
+http://localhost/tessonilov3/login.html
 Username: admin
 Password: admin123
-```
-
-### 3. Akses Dashboard
-```
-Otomatis redirect ke: http://localhost/tessonilov3/dashboard.html
-```
-
-### 4. Buat Akun Customer & Pesan Tiket
-```
-URL: http://localhost/tessonilov3/register.html
-Register → Login → http://localhost/tessonilov3/booking.html
 ```
 
 ---
@@ -284,37 +362,114 @@ Sections:
 
 ---
 
-## 🎯 Next Steps / Future Enhancements
+## 📸 Screenshots
 
-- [ ] Payment gateway integration
-- [ ] Email notification system
-- [ ] SMS alerts
-- [ ] Advanced reporting
-- [ ] Mobile app (React Native)
-- [ ] Multi-language support
-- [ ] Dark mode UI
-- [ ] API rate limiting
-- [ ] Advanced analytics
-- [ ] Seasonal pricing
+### Homepage
+Tampilan utama website dengan informasi Taman Nasional Tesso Nilo, fitur unggulan, dan navigasi ke berbagai halaman.
+
+### Dashboard Admin
+Panel administrasi dengan statistik real-time, grafik pendapatan, dan manajemen data.
+
+### Halaman Booking
+Form pemesanan tiket dengan kalkulasi harga otomatis dan konfirmasi pembayaran.
+
+### Halaman Berita
+Daftar berita dan informasi terkini tentang kegiatan konservasi.
+
+> 💡 **Tip**: Kunjungi [tessoniloproject.my.id](http://tessoniloproject.my.id/) untuk melihat tampilan live!
+
+---
+
+## 🚀 Deployment
+
+### Production Server
+Website ini sudah di-deploy dan dapat diakses di:
+- **URL**: [http://tessoniloproject.my.id/](http://tessoniloproject.my.id/)
+- **Hosting**: ArenHost Indonesia
+- **Database**: MySQL Remote
+- **SSL**: Tersedia
+
+### Local Development
+Untuk pengembangan lokal, gunakan XAMPP dengan konfigurasi standar.
+
+---
+
+## 🎯 Fitur yang Sudah Diimplementasikan
+
+- [x] ✅ Payment gateway integration (Midtrans)
+- [x] ✅ Backend & Frontend terintegrasi
+- [x] ✅ Dashboard Admin lengkap
+- [x] ✅ CRUD Berita & Reservasi
+- [x] ✅ Session Management
+- [x] ✅ Role-based Access Control
+- [x] ✅ Export CSV/JSON/PDF
+- [x] ✅ Responsive Design
+- [ ] 🔄 Email notification system
+- [ ] 🔄 SMS alerts
+- [ ] 🔄 Mobile app
 
 ---
 
 ## 📝 License & Credits
 
-**Dibuat untuk**: Program Studi Teknik Informatika RP 23 CNS A  
-**Author**: Damar Satriatama Putra (23552011300)  
-**Project**: Taman Nasional Tesso Nilo Management System
+<div align="center">
+
+### Informasi Proyek
+
+| Keterangan | Detail |
+|------------|--------|
+| **Nama Proyek** | Sistem Manajemen Taman Nasional Tesso Nilo |
+| **Versi** | 1.1.0 |
+| **Tanggal Rilis** | 7 Februari 2026 |
+| **Author** | Damar Satriatama Putra |
+| **NIM** | 23552011300 |
+| **Program Studi** | Teknik Informatika |
+| **Kelas** | RP 23 CNS A |
+| **Live URL** | [tessoniloproject.my.id](http://tessoniloproject.my.id/) |
+
+</div>
 
 ---
 
-## 📞 Support
+## 📞 Support & Contact
 
 Untuk bantuan atau pertanyaan:
-- 📧 Email: admin@tessonilo.com
-- 📞 Phone: +62-761-2345678
-- 🏢 Website: www.tessonilo.com
+
+| Kontak | Detail |
+|--------|--------|
+| 🌐 **Website** | [tessoniloproject.my.id](http://tessoniloproject.my.id/) |
+| 📧 **Email** | admin@tessonilo.com |
+| 📞 **Phone** | +62-761-2345678 |
+| 📍 **Lokasi** | Taman Nasional Tesso Nilo, Riau, Indonesia |
 
 ---
 
-**Happy Booking! 🌿🐘**
-# CRUD-UAS
+## 📚 Dokumentasi Lengkap
+
+| Dokumen | Deskripsi |
+|---------|-----------|
+| [DOKUMENTASI.md](./DOKUMENTASI.md) | Dokumentasi teknis lengkap |
+| [PROJECT_SUMMARY.md](./PROJECT_SUMMARY.md) | Ringkasan proyek |
+| [REQUIREMENT_CHECKLIST.md](./REQUIREMENT_CHECKLIST.md) | Checklist requirement |
+| [TESTING_GUIDE.md](./TESTING_GUIDE.md) | Panduan testing |
+| [SETUP_LOGIN_GUIDE.md](./SETUP_LOGIN_GUIDE.md) | Panduan setup & login |
+| [CUSTOMER_FLOW_GUIDE.md](./CUSTOMER_FLOW_GUIDE.md) | Alur customer |
+
+---
+
+<div align="center">
+
+### 🌿 Taman Nasional Tesso Nilo 🐘
+
+*Konservasi Alam untuk Generasi Mendatang*
+
+**[🔗 Kunjungi Website](http://tessoniloproject.my.id/)**
+
+---
+
+⭐ **Jika proyek ini bermanfaat, silakan berikan ⭐ Star!**
+
+Made with ❤️ by Damar Satriatama Putra
+
+</div>
+
