@@ -1,15 +1,67 @@
-# Dokumentasi Sistem Taman Nasional Tesso Nilo
+# 📖 Dokumentasi Sistem Taman Nasional Tesso Nilo
 
-## 📋 Daftar Isi
-1. [Requirement & Fitur](#requirement--fitur)
-2. [Arsitektur Sistem](#arsitektur-sistem)
-3. [Setup & Instalasi](#setup--instalasi)
-4. [Struktur Folder](#struktur-folder)
-5. [API Documentation](#api-documentation)
-6. [User Guide](#user-guide)
-7. [Testing](#testing)
+<div align="center">
+
+**Dokumentasi Teknis Lengkap**
+
+🔗 **Live Demo**: [http://tessoniloproject.my.id/](http://tessoniloproject.my.id/)
+
+| Info | Detail |
+|------|--------|
+| **Versi** | 1.1.0 |
+| **Status** | ✅ Production Ready |
+| **Last Updated** | 7 Februari 2026 |
+| **Author** | Damar Satriatama Putra (23552011300) |
+
+</div>
 
 ---
+
+## 📋 Daftar Isi
+1. [Akses Live Demo](#akses-live-demo)
+2. [Requirement & Fitur](#requirement--fitur)
+3. [Arsitektur Sistem](#arsitektur-sistem)
+4. [Setup & Instalasi](#setup--instalasi)
+5. [Struktur Folder](#struktur-folder)
+6. [API Documentation](#api-documentation)
+7. [User Guide](#user-guide)
+8. [Testing](#testing)
+9. [Security](#security)
+10. [Troubleshooting](#troubleshooting)
+
+---
+
+## 🌐 Akses Live Demo
+
+Sistem ini sudah di-deploy dan dapat diakses secara online:
+
+### Halaman Utama
+| Halaman | URL Live | Deskripsi |
+|---------|----------|-----------|
+| **Homepage** | [tessoniloproject.my.id](http://tessoniloproject.my.id/) | Landing page |
+| **Login** | [tessoniloproject.my.id/login.html](http://tessoniloproject.my.id/login.html) | Halaman login |
+| **Register** | [tessoniloproject.my.id/register.html](http://tessoniloproject.my.id/register.html) | Daftar akun baru |
+| **Booking** | [tessoniloproject.my.id/booking.html](http://tessoniloproject.my.id/booking.html) | Pesan tiket |
+| **Dashboard** | [tessoniloproject.my.id/dashboard.html](http://tessoniloproject.my.id/dashboard.html) | Admin panel |
+| **Berita** | [tessoniloproject.my.id/berita.html](http://tessoniloproject.my.id/berita.html) | Daftar berita |
+| **About** | [tessoniloproject.my.id/about.html](http://tessoniloproject.my.id/about.html) | Tentang |
+| **Spesies** | [tessoniloproject.my.id/spesies.html](http://tessoniloproject.my.id/spesies.html) | Flora & Fauna |
+
+### Kredensial Demo
+```
+👤 ADMIN
+   Username: admin
+   Password: admin123
+   Akses: Full dashboard, CRUD, Export
+
+👤 CUSTOMER
+   Buat akun baru di Register
+   Akses: Booking tiket, Riwayat
+```
+
+---
+
+
 
 ## ✅ Requirement & Fitur
 
@@ -102,8 +154,14 @@ Redirect based on role
 ---
 
 ## 🚀 Setup & Instalasi
+Sistem ini dapat dijalankan secara lokal (XAMPP) atau diakses langsung melalui link produksi.
 
-### Prerequisites
+### 🌐 Live Access (Produksi)
+URL: **[http://tessoniloproject.my.id/](http://tessoniloproject.my.id/)**
+
+### 💻 Local Setup
+#### Prerequisites
+
 - XAMPP (Apache, PHP 7.4+, MySQL 5.7+)
 - Modern browser (Chrome, Firefox, Safari, Edge)
 - Text editor (VS Code, Sublime, etc.)
@@ -866,10 +924,38 @@ Solution:
 ## 📞 Support & Contact
 
 Untuk pertanyaan atau issues:
-- Email: admin@tessonilo.com
-- Phone: +62-761-2345678
+
+| Kontak | Informasi |
+|--------|-----------|
+| 🌐 **Website** | [http://tessoniloproject.my.id/](http://tessoniloproject.my.id/) |
+| 📧 **Email** | admin@tessonilo.com |
+| 📞 **Phone** | +62-761-2345678 |
+| 📍 **Lokasi** | Taman Nasional Tesso Nilo, Riau, Indonesia |
 
 ---
 
-**Dokumentasi Terakhir Updated**: 22 Desember 2025
-**Version**: 1.0.0
+## 📚 Dokumentasi Terkait
+
+- [README.md](./README.md) - Quick start guide
+- [PROJECT_SUMMARY.md](./PROJECT_SUMMARY.md) - Ringkasan proyek
+- [REQUIREMENT_CHECKLIST.md](./REQUIREMENT_CHECKLIST.md) - Checklist requirement
+- [TESTING_GUIDE.md](./TESTING_GUIDE.md) - Panduan testing
+- [SETUP_LOGIN_GUIDE.md](./SETUP_LOGIN_GUIDE.md) - Panduan setup & login
+- [CUSTOMER_FLOW_GUIDE.md](./CUSTOMER_FLOW_GUIDE.md) - Alur customer
+
+---
+
+<div align="center">
+
+### 🌿 Taman Nasional Tesso Nilo 🐘
+
+**[🔗 Akses Website Live](http://tessoniloproject.my.id/)**
+
+---
+
+**Dokumentasi Terakhir Updated**: 7 Februari 2026  
+**Version**: 1.1.0  
+**Author**: Damar Satriatama Putra (23552011300)
+
+</div>
+
