@@ -1,4 +1,30 @@
-# 🎫 USER FLOW BARU - CUSTOMER BOOKING
+# 🎫 USER FLOW - CUSTOMER BOOKING
+
+<div align="center">
+
+**Panduan Alur Customer untuk Pemesanan Tiket**
+
+🔗 **Live Demo**: [http://tessoniloproject.my.id/](http://tessoniloproject.my.id/)
+
+| Info | Detail |
+|------|--------|
+| **Last Updated** | 7 Februari 2026 |
+| **Status** | ✅ Production Ready |
+
+</div>
+
+---
+
+## 🌐 Akses Live
+
+| Aksi | URL |
+|------|-----|
+| **Homepage** | [tessoniloproject.my.id](http://tessoniloproject.my.id/) |
+| **Login** | [tessoniloproject.my.id/login.html](http://tessoniloproject.my.id/login.html) |
+| **Register** | [tessoniloproject.my.id/register.html](http://tessoniloproject.my.id/register.html) |
+| **Booking** | [tessoniloproject.my.id/booking.html](http://tessoniloproject.my.id/booking.html) |
+
+---
 
 ## Alur Login & Akses Customer
 
@@ -371,3 +397,18 @@ Ketika customer klik logout:
 - Session timeout: 1 jam
 - Auto-fill fields tidak bisa diedit customer (opsional)
 - Booking history menampilkan 3 terakhir
+
+---
+
+<div align="center">
+
+### 🌿 Taman Nasional Tesso Nilo 🐘
+
+**[🔗 Akses Website Live](http://tessoniloproject.my.id/)**
+
+---
+
+**Last Updated**: 7 Februari 2026
+
+</div>
+
