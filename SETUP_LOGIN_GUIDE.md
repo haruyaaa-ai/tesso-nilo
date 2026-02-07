@@ -1,4 +1,6 @@
 # 🚀 PANDUAN LOGIN & SETUP DATABASE
+Sistem Manajemen Tesso Nilo dapat diakses secara live di **[http://tessoniloproject.my.id/](http://tessoniloproject.my.id/)** atau dijalankan secara lokal.
+
 
 ## Jika Melihat Error "Terjadi kesalahan. Silakan coba lagi."
 
@@ -6,15 +8,15 @@
 Pertama kali menggunakan sistem, Anda HARUS menginisialisasi database terlebih dahulu.
 
 **Cara 1: Menggunakan Setup Page (REKOMENDASI)**
-1. Buka browser: `http://localhost/tessonilov3/setup.html`
+1. Buka browser: `http://tessoniloproject.my.id/setup.html` (atau local: `http://localhost/tessonilov3/setup.html`)
 2. Klik tombol **"Inisialisasi Database"**
 3. Tunggu sampai muncul pesan **"Database initialized successfully"** (hijau)
-4. Klik **"Lanjut ke Login"** atau buka `http://localhost/tessonilov3/login.html`
+4. Klik **"Lanjut ke Login"** atau buka `http://tessoniloproject.my.id/login.html`
 
 **Cara 2: Menggunakan Direct API**
-1. Buka browser: `http://localhost/tessonilov3/api/init_db.php`
+1. Buka browser: `http://tessoniloproject.my.id/api/init_db.php`
 2. Tunggu sampai muncul pesan JSON: `{"success":true,"message":"Database initialized successfully"}`
-3. Kemudian baru login di: `http://localhost/tessonilov3/login.html`
+3. Kemudian baru login di: `http://tessoniloproject.my.id/login.html`
 
 ---
 
