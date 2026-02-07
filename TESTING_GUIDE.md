@@ -3,7 +3,7 @@
 
 **Purpose**: Complete testing guide to verify all features work correctly  
 **Duration**: ~30 minutes for full test cycle  
-**Last Updated**: 22 Desember 2025
+**Last Updated**: 7 Februari 2026
 
 ---
 
@@ -20,7 +20,8 @@
 ### 2. Initialize Database
 ```
 1. Open browser
-2. Go to: http://localhost/tessonilov3/api/init_db.php
+2. Link: [http://tessoniloproject.my.id/api/init_db.php](http://tessoniloproject.my.id/api/init_db.php)
+   (Atau local: http://localhost/tessonilov3/api/init_db.php)
 3. Wait for: "Database initialized successfully"
 4. Database is now ready
 ```
@@ -34,7 +35,7 @@
 
 ```
 Steps:
-1. Open: http://localhost/tessonilov3/login.html
+1. Open: http://tessoniloproject.my.id/login.html
 2. Enter Username: admin
 3. Enter Password: admin123
 4. Click "MASUK"
@@ -56,7 +57,7 @@ Notes: ___________________________
 
 ```
 Steps:
-1. Open: http://localhost/tessonilov3/login.html
+1. Open: http://tessoniloproject.my.id/login.html
 2. Enter Username: admin
 3. Enter Password: wrongpassword
 4. Click "MASUK"
@@ -76,7 +77,7 @@ Notes: ___________________________
 
 ```
 Steps:
-1. Open: http://localhost/tessonilov3/register.html
+1. Open: http://tessoniloproject.my.id/register.html
 2. Enter Username: testcustomer
 3. Enter Email: test@example.com
 4. Enter Full Name: Test Customer
@@ -99,7 +100,7 @@ Notes: ___________________________
 
 ```
 Steps:
-1. Open: http://localhost/tessonilov3/login.html
+1. Open: http://tessoniloproject.my.id/login.html
 2. Enter Username: testcustomer
 3. Enter Password: testpass123
 4. Click "MASUK"
@@ -344,7 +345,7 @@ Notes: ___________________________
 ```
 Steps:
 1. Logout from admin
-2. Open: http://localhost/tessonilov3/berita.html
+2. Open: http://tessoniloproject.my.id/berita.html
 3. Check news list
 
 Expected Result:
