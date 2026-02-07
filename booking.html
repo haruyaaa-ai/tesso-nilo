@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesan Tiket - Tesso Nilo National Park</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Midtrans Snap.js - Dihapus karena pembayaran ditiadakan -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Oswald:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-display {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .hero-clip {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        .text-shadow-glow {
+            text-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 antialiased flex flex-col min-h-screen">
+    <header id="mainHeader"></header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative text-white min-h-[50vh] flex items-center pt-20 hero-clip overflow-hidden"
+            style="background-color: #052e16;">
+            <div class="absolute inset-0 z-0">
+                <img src="images/hero_premium.png"
+                    class="w-full h-full object-cover opacity-60 grayscale saturate-50 hover:grayscale-0 transition-all duration-1000">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+            </div>
+            <div class="container mx-auto px-6 relative z-10">
+                <span
+                    class="text-yellow-400 font-bold tracking-widest uppercase mb-2 block text-sm drop-shadow-md">Reservasi
+                    Online</span>
+                <h1 class="text-5xl lg:text-7xl font-bold uppercase tracking-tight drop-shadow-lg text-white">
+                    Tiket <span class="text-green-500 text-shadow-glow">Masuk</span>
+                </h1>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <div class="container max-w-6xl mx-auto px-6 py-20 -mt-20 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Booking Form -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-lg shadow-2xl p-8 border-t-4 border-yellow-500">
+                        <div class="flex items-center gap-3 mb-6 border-b pb-4">
+                            <i data-lucide="ticket" class="w-6 h-6 text-yellow-500"></i>
+                            <h2 class="text-2xl font-bold uppercase text-gray-800">Formulir Pemesanan</h2>
+                        </div>
+
+                        <form id="bookingForm" class="space-y-6">
+                            <!-- Personal Info -->
+                            <fieldset class="pb-6">
+                                <legend class="text-lg font-bold text-green-800 mb-4 flex items-center gap-2">
+                                    <span
+                                        class="w-6 h-6 rounded-full bg-green-100 text-green-800 text-xs flex items-center justify-center">1</span>
+                                    Informasi Pribadi
+                                </legend>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1 text-gray-700">Nama Lengkap</label>
+                                        <input type="text" id="name" placeholder="Nama Lengkap Anda" required
+                                            class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1 text-gray-700">Email</label>
+                                        <input type="email" id="email" placeholder="Email Anda" required
+                                            class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition">
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label class="block text-sm font-medium mb-1 text-gray-700">Nomor
+                                            Telepon</label>
+                                        <input type="tel" id="phone" placeholder="Contoh: 08123456789" required
+                                            class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition">
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <!-- Booking Details -->
+                            <fieldset class="border-t pt-6 pb-6">
+                                <legend class="text-lg font-bold text-green-800 mb-4 flex items-center gap-2">
+                                    <span
+                                        class="w-6 h-6 rounded-full bg-green-100 text-green-800 text-xs flex items-center justify-center">2</span>
+                                    Detail Kunjungan
+                                </legend>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1 text-gray-700">Tanggal
+                                            Kunjungan</label>
+                                        <input type="date" id="date_booking" required
+                                            class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1 text-gray-700">Kategori
+                                            Pengunjung</label>
+                                        <select id="citizen_type"
+                                            class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition"
+                                            onchange="calculateTotalPrice()">
+                                            <option value="wni">WNI (Domestik) - Rp 15.000</option>
+                                            <option value="wna">WNA (Mancanegara) - Rp 150.000</option>
+                                        </select>
+                                    </div>
+                                    <div class="mt-4 md:mt-0">
+                                        <label class="block text-sm font-medium mb-1 text-gray-700">Jumlah Tiket</label>
+                                        <div class="flex items-center gap-2">
+                                            <button type="button"
+                                                class="w-10 h-10 border rounded hover:bg-gray-100 font-bold"
+                                                onclick="changeQuantity(-1)">−</button>
+                                            <input type="number" id="tickets" value="1" min="1" max="100"
+                                                placeholder="Jumlah" required
+                                                class="w-20 border rounded px-3 py-2 text-center font-bold text-lg">
+                                            <button type="button"
+                                                class="w-10 h-10 border rounded hover:bg-gray-100 font-bold"
+                                                onclick="changeQuantity(1)">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Ticket Price Display -->
+                                <div id="ticketPriceInfo"
+                                    class="mt-6 p-4 bg-green-50 border border-green-100 rounded-lg flex justify-between items-center">
+                                    <span class="text-sm text-green-800 font-medium">Est. Total Tagihan</span>
+                                    <p class="text-2xl font-bold text-green-900 font-display"><span id="totalPrice">Rp
+                                            15.000</span></p>
+                                </div>
+                            </fieldset>
+
+                            <!-- Payment Method Selection -->
+
+
+                            <!-- Notes -->
+                            <fieldset class="pb-6">
+                                <label class="block text-sm font-medium mb-2 text-gray-700">Catatan (Opsional)</label>
+                                <textarea id="notes" rows="3"
+                                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 transition"
+                                    placeholder="Permintaan khusus..."></textarea>
+                            </fieldset>
+
+                            <!-- Terms & Submit -->
+                            <div class="space-y-4 pt-4 border-t">
+                                <label
+                                    class="flex items-start gap-3 p-4 bg-gray-50 rounded text-sm text-gray-600 cursor-pointer">
+                                    <input type="checkbox" id="terms" required class="mt-1 accent-green-600">
+                                    <span>Saya menyetujui <a href="javascript:void(0)" onclick="toggleTermsModal(true)"
+                                            class="text-green-700 hover:underline font-bold">Syarat dan Ketentuan</a>
+                                        serta kebijakan privasi Taman Nasional Tesso Nilo.</span>
+                                </label>
+                                <button type="submit"
+                                    class="w-full bg-green-900 text-yellow-400 py-4 rounded-lg font-bold uppercase tracking-wider hover:bg-green-800 transition shadow-lg transform hover:-translate-y-1">
+                                    Pesan Sekarang
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Booking Information & History -->
+                <div class="space-y-6">
+                    <!-- Info Box -->
+                    <div class="bg-gray-900 text-white rounded-lg shadow-xl p-6 relative overflow-hidden">
+                        <i data-lucide="info" class="absolute top-4 right-4 w-12 h-12 text-white/10"></i>
+                        <h3 class="text-lg font-bold font-display uppercase text-yellow-500 mb-4">Informasi Tiket</h3>
+                        <ul class="space-y-3 text-sm text-gray-300">
+                            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Tiket
+                                berlaku seharian (08:00 - 17:00).</li>
+                            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Termasuk
+                                asuransi pengunjung.</li>
+                            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Anak di
+                                bawah 3 tahun gratis.</li>
+                        </ul>
+                    </div>
+
+                    <!-- History Box -->
+                    <div class="bg-white rounded-lg shadow-xl p-6 border-t-4 border-green-600">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-bold uppercase text-gray-800">Riwayat</h3>
+                            <a href="riwayat.html"
+                                class="text-xs text-green-700 hover:underline font-bold uppercase tracking-wider">Lihat
+                                Semua</a>
+                        </div>
+                        <div id="bookingsList" class="space-y-4">
+                            <!-- Recent bookings will be loaded here -->
+                            <div class="animate-pulse space-y-3">
+                                <div class="h-10 bg-gray-100 rounded"></div>
+                                <div class="h-10 bg-gray-100 rounded"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Konfirmasi -->
+    <div id="confirmModal"
+        class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[100] backdrop-blur-sm px-4 overflow-y-auto py-10">
+        <div class="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full border-t-8 border-yellow-500 my-auto">
+            <h3 class="text-2xl font-bold font-display uppercase mb-6 text-gray-900 border-b pb-4">Konfirmasi Data</h3>
+            <div id="confirmDetails" class="space-y-3 mb-8 text-sm text-gray-600"></div>
+            <div class="flex items-center justify-between mb-8 bg-green-50 p-4 rounded-lg">
+                <span class="font-bold text-green-800">Total Pembayaran</span>
+                <span class="text-2xl font-bold text-green-900 font-display" id="confirmTotal">Rp 0</span>
+            </div>
+            <div class="flex flex-col gap-3">
+                <button onclick="processToBooking()"
+                    class="w-full bg-green-900 text-yellow-400 py-4 rounded-lg font-bold hover:bg-green-800 transition shadow-lg flex items-center justify-center gap-2">
+                    <i data-lucide="check-circle" class="w-5 h-5"></i> Konfirmasi & Pesan
+                </button>
+                <button onclick="cancelConfirm()"
+                    class="w-full py-3 text-gray-500 font-bold hover:text-gray-800 transition">
+                    Batal
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal & Terms Modal remain relatively similar but styled -->
+    <!-- Modal Pembayaran Premium (Langkah 2) -->
+    <div id="paymentModal"
+        class="hidden fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-[100] backdrop-blur-sm p-4 overflow-y-auto py-10">
+        <div class="bg-white rounded-[32px] w-full max-w-4xl overflow-hidden shadow-2xl border border-gray-50 relative">
+            <button onclick="closePaymentModal()" class="absolute top-6 right-6 text-gray-400 hover:text-gray-600 z-10">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div class="p-8 md:p-12">
+                <div class="flex flex-col md:flex-row justify-between items-start mb-12 gap-4">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900 uppercase font-display">Pembayaran</h1>
+                        <p class="text-sm text-gray-400 mt-2">Token: <span id="paymentToken"
+                                class="font-bold text-gray-600 tracking-wider uppercase">...</span></p>
+                    </div>
+                    <div
+                        class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-[11px] font-bold tracking-wide uppercase flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-yellow-600 animate-pulse"></div>
+                        Menunggu Pembayaran
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="flex flex-col items-center">
+                        <div class="relative bg-white p-4 border-2 border-dashed border-gray-200 rounded-2xl">
+                            <img id="qrisImage" src="" alt="QRIS QR Code"
+                                class="w-56 h-56 md:w-64 md:h-64 mix-blend-multiply">
+                        </div>
+                        <p class="text-xs text-center mt-6 font-bold text-gray-400 uppercase tracking-widest">Scan QR
+                            Code di atas</p>
+                        <p class="text-4xl font-black text-gray-900 mt-3 font-display text-center"
+                            id="paymentTotalPremium">Rp 0</p>
+                    </div>
+
+                    <div class="flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="flex justify-between py-2 border-b border-gray-100"><span
+                                    class="text-gray-500">Nama</span> <span class="font-bold text-gray-900"
+                                    id="detailName">...</span></div>
+                            <div class="flex justify-between py-2 border-b border-gray-100"><span
+                                    class="text-gray-500">Telepon</span> <span class="font-bold text-gray-900"
+                                    id="detailPhone">...</span></div>
+                            <div class="flex justify-between py-2 border-b border-gray-100"><span
+                                    class="text-gray-500">ID Transaksi</span> <span
+                                    class="font-bold text-gray-900 font-mono" id="detailTrxId">...</span></div>
+                            <div class="flex justify-between py-2 border-b border-gray-100"><span
+                                    class="text-gray-500">Tanggal</span> <span class="font-bold text-gray-900"
+                                    id="detailDate">...</span></div>
+                        </div>
+
+                        <div class="mt-8 bg-green-50 rounded-xl p-6">
+                            <div class="text-center mb-6">
+                                <p class="text-xs uppercase font-bold text-green-800 mb-2">Waktu Tersisa</p>
+                                <p class="text-3xl font-mono font-black text-green-600" id="countdown">00 : 59 : 59</p>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="simulatePaymentSuccess()"
+                                    class="bg-green-700 text-white py-3 rounded-lg font-bold text-xs uppercase hover:bg-green-800 transition">Cek
+                                    Status</button>
+                                <button onclick="closePaymentModal()"
+                                    class="bg-red-500 text-white py-3 rounded-lg font-bold text-xs uppercase hover:bg-red-600 transition">Batalkan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal"
+        class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[100] backdrop-blur-sm px-4 overflow-y-auto py-10">
+        <div class="bg-white rounded-xl shadow-2xl p-8 max-w-sm w-full text-center border-t-8 border-green-500 my-auto">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i data-lucide="check" class="w-8 h-8 text-green-600"></i>
+            </div>
+            <h3 class="text-2xl font-bold font-display uppercase mb-2">Pembayaran Berhasil!</h3>
+            <p class="text-gray-600 mb-6 font-mono text-sm">ID Booking: <span id="bookingId"
+                    class="font-bold text-black">#...</span></p>
+            <button onclick="closeSuccessModal()"
+                class="w-full bg-green-900 text-white py-3 rounded-lg font-bold uppercase hover:bg-green-800 transition shadow-lg">Lihat
+                E-Tiket</button>
+        </div>
+    </div>
+
+    <!-- Terms Modal (Simplified) -->
+    <div id="termsModal"
+        class="hidden fixed inset-0 bg-black/80 z-[110] flex items-center justify-center backdrop-blur-sm p-4 overflow-y-auto py-10">
+        <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full max-h-none overflow-visible p-8 relative my-auto">
+            <button onclick="toggleTermsModal(false)" class="absolute top-4 right-4 text-gray-400 hover:text-black"><i
+                    data-lucide="x" class="w-6 h-6"></i></button>
+            <h3 class="text-2xl font-bold font-display uppercase mb-4">Syarat & Ketentuan</h3>
+            <div class="space-y-4 text-sm text-gray-600 leading-relaxed">
+                <p>1. Tiket tidak dapat dikembalikan (`Non-refundable`).</p>
+                <p>2. Pengunjung wajib mematuhi protokol konservasi.</p>
+                <p>3. Dilarang membawa senjata tajam, narkoba, atau benda berbahaya.</p>
+                <p>4. Jaga kebersihan lingkungan.</p>
+            </div>
+            <button onclick="toggleTermsModal(false)"
+                class="w-full mt-8 bg-gray-900 text-white py-3 rounded font-bold uppercase">Saya Mengerti</button>
+        </div>
+    </div>
+
+    <!-- Script Logic (Preserved & Adapted) -->
+    <script>
+        const API_BASE = 'api';
+        let currentBookingData = {};
+        let activeBookingId = null;
+        let countdownInterval;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check Lucide (handled by main.js but safer here too)
+            if (window.lucide) lucide.createIcons();
+
+            checkSession();
+            setupEventListeners();
+            loadUserBookings();
+            calculateTotalPrice();
+            handleFooter(); // Explicitly call main.js footer handler
+        });
+
+        function toggleTermsModal(show) {
+            const modal = document.getElementById('termsModal');
+            if (show) { modal.classList.remove('hidden'); if (window.lucide) lucide.createIcons(); }
+            else { modal.classList.add('hidden'); }
+        }
+
+        function calculateTotalPrice() {
+            const tickets = parseInt(document.getElementById('tickets').value) || 1;
+            const type = document.getElementById('citizen_type').value;
+            const pricePerTicket = type === 'wni' ? 15000 : 150000;
+            const total = tickets * pricePerTicket;
+            document.getElementById('totalPrice').textContent = 'Rp ' + formatNumber(total);
+        }
+
+        function setupEventListeners() {
+            const form = document.getElementById('bookingForm');
+            if (form) form.addEventListener('submit', handleFormSubmit);
+            const ticketsInput = document.getElementById('tickets');
+            if (ticketsInput) ticketsInput.addEventListener('input', calculateTotalPrice);
+        }
+
+        function formatNumber(num) {
+            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+        }
+
+        function checkSession() {
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+            if (!isLoggedIn) {
+                // Optional: alert('Silakan login terlebih dahulu');
+                window.location.href = 'login.html';
+            }
+        }
+
+        function changeQuantity(val) {
+            const input = document.getElementById('tickets');
+            let current = parseInt(input.value) || 1;
+            current += val;
+            if (current < 1) current = 1;
+            input.value = current;
+            calculateTotalPrice();
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const citizenType = document.getElementById('citizen_type').value;
+            const tickets = parseInt(document.getElementById('tickets').value);
+            const pricePerTicket = citizenType === 'wni' ? 15000 : 150000;
+
+            currentBookingData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                date_booking: document.getElementById('date_booking').value,
+                tickets: tickets,
+                citizen_type: citizenType,
+                notes: document.getElementById('notes').value
+            };
+
+            const total = tickets * pricePerTicket;
+            document.getElementById('confirmTotal').textContent = 'Rp ' + formatNumber(total);
+            document.getElementById('confirmDetails').innerHTML = `
+                <div class="flex justify-between border-b border-gray-100 py-2"><span>Nama</span> <span class="font-bold text-gray-900">${currentBookingData.name}</span></div>
+                <div class="flex justify-between border-b border-gray-100 py-2"><span>Kebangsaan</span> <span class="font-bold text-gray-900">${citizenType.toUpperCase()}</span></div>
+                <div class="flex justify-between border-b border-gray-100 py-2"><span>Tanggal</span> <span class="font-bold text-gray-900">${new Date(currentBookingData.date_booking).toLocaleDateString('id-ID')}</span></div>
+                <div class="flex justify-between border-b border-gray-100 py-2"><span>Tiket</span> <span class="font-bold text-gray-900">${currentBookingData.tickets} Tiket</span></div>
+            `;
+            document.getElementById('confirmModal').classList.remove('hidden');
+        }
+
+        function cancelConfirm() {
+            document.getElementById('confirmModal').classList.add('hidden');
+        }
+
+        async function processToBooking() {
+            document.getElementById('confirmModal').classList.add('hidden');
+            const btn = document.querySelector('button[onclick="processToBooking()"]');
+            const originalText = btn ? btn.textContent : 'Konfirmasi & Pesan';
+            if (btn) {
+                btn.textContent = 'Memproses...';
+                btn.disabled = true;
+            }
+
+            try {
+                // 1. Buat Reservasi
+                const res = await fetch(API_BASE + '/reservasi/create.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify(currentBookingData)
+                });
+
+                const result = await res.json();
+
+                if (result.success) {
+                    activeBookingId = result.data.id;
+                    // 2. Langsung konfirmasi (karena tidak ada pembayaran)
+                    confirmPaymentOnServer(activeBookingId);
+                } else {
+                    alert('Gagal membuat reservasi: ' + result.message);
+                    if (btn) {
+                        btn.textContent = originalText;
+                        btn.disabled = false;
+                    }
+                }
+            } catch (error) {
+                console.error('Booking error:', error);
+                alert('Gagal memproses pesanan.');
+                if (btn) {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                }
+            }
+        }
+
+        function confirmPaymentOnServer(id) {
+            // Update status di database menjadi 'confirmed'
+            fetch(API_BASE + '/reservasi/confirm_payment.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+                body: JSON.stringify({ id: id })
+            })
+                .then(res => res.json())
+                .then(result => {
+                    if (result.success) {
+                        document.getElementById('bookingId').textContent = '#' + id;
+                        document.getElementById('successModal').classList.remove('hidden');
+                        document.getElementById('bookingForm').reset();
+                        loadUserBookings();
+                    } else {
+                        alert('Pesan: ' + result.message);
+                    }
+                })
+                .catch(err => console.error('Verification error:', err));
+        }
+
+        function closeSuccessModal() {
+            if (activeBookingId) { window.location.href = 'tiket.html?id=' + activeBookingId; }
+            else { document.getElementById('successModal').classList.add('hidden'); }
+        }
+
+        function loadUserBookings() {
+            fetch(API_BASE + '/reservasi/read.php', { credentials: 'include' })
+                .then(res => res.json())
+                .then(result => {
+                    if (result.success) {
+                        const bookings = result.data.data.slice(0, 3);
+                        const container = document.getElementById('bookingsList');
+                        if (bookings.length === 0) {
+                            container.innerHTML = '<p class="text-gray-500 text-sm italic py-4 text-center">Belum ada riwayat pemesanan.</p>';
+                        } else {
+                            container.innerHTML = bookings.map(booking => `
+                            <div class="p-4 border-l-4 ${booking.status === 'confirmed' ? 'border-green-500 bg-green-50' : 'border-yellow-500 bg-yellow-50'} rounded-lg shadow-sm mb-3">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="font-bold text-gray-800 text-sm">#${booking.id}</span>
+                                    ${booking.status === 'confirmed' ? `<a href="tiket.html?id=${booking.id}" class="text-[10px] bg-green-700 text-white px-2 py-1 rounded font-bold uppercase hover:bg-green-800">E-Tiket</a>` : ''}
+                                </div>
+                                <div class="text-xs text-gray-600 mb-2">${new Date(booking.date_booking).toLocaleDateString('id-ID')} · ${booking.tickets} Tiket</div>
+                                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded ${booking.status === 'confirmed' ? 'bg-green-200 text-green-800' : 'bg-yellow-200 text-yellow-800'}">${booking.status}</span>
+                            </div>
+                        `).join('');
+                        }
+                    }
+                })
+                .catch(error => console.error('Failed to load bookings:', error));
+        }
+    </script>
+    <script src="main.js?v=2.4"></script>
+</body>
+
+</html>

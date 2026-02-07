@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mamalia Sumatera - Tesso Nilo National Park</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Oswald:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-display {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .hero-clip {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        .text-shadow-glow {
+            text-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 antialiased flex flex-col min-h-screen">
+    <!-- Header Placeholder -->
+    <div id="mainHeader"></div>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative text-white min-h-[50vh] flex items-center pt-20 hero-clip overflow-hidden"
+            style="background-color: #052e16;">
+            <div class="absolute inset-0 z-0">
+                <img src="images/mamalia/gajah-sumatera-mamalia.jpg"
+                    class="w-full h-full object-cover opacity-60 grayscale saturate-50 hover:grayscale-0 transition-all duration-1000">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+            </div>
+            <div class="container mx-auto px-6 relative z-10">
+                <a href="spesies.html"
+                    class="inline-flex items-center text-yellow-400 font-bold tracking-widest uppercase mb-4 text-sm hover:underline">
+                    <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i> Kembali ke Spesies
+                </a>
+                <h1 class="text-5xl lg:text-7xl font-bold uppercase tracking-tight drop-shadow-lg text-white">
+                    Mamalia <span class="text-green-500 text-shadow-glow">Sumatera</span>
+                </h1>
+                <p class="text-gray-200 mt-4 max-w-2xl text-lg font-light">
+                    Koleksi satwa mamalia ikonik yang menjadikan Tesso Nilo sebagai benteng terakhir pelestarian di
+                    Sumatera.
+                </p>
+            </div>
+        </section>
+
+        <!-- Species Grid -->
+        <section class="py-20 relative z-10 px-6 -mt-20">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="speciesGrid">
+                    <!-- Script will inject cards here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="main.js?v=2"></script>
+    <script>
+        const mammals = [
+            { name: "Berang-Berang", file: "berang-berang-mamalia.jpg", status: "Terancam" },
+            { name: "Beruang Madu", file: "beruang-madu-mamalia.jpg", status: "Rentan" },
+            { name: "Binturung Muntu", file: "binturung-muntu-mamalia.jpg", status: "Rentan" },
+            { name: "Gajah Sumatera", file: "gajah-sumatera-mamalia.jpg", status: "Kritis" },
+            { name: "Harimau Sumatera", file: "harimau-sumatera-mamalia.jpg", status: "Kritis" },
+            { name: "Kijang Mencek", file: "kijang-mencek-mamalia.jpg", status: "Aman" },
+            { name: "Kucing Emas", file: "kucing-emas-mamalia.jpg", status: "Terancam" },
+            { name: "Kucing Kuwuk", file: "kucing-kuwuk-mamalia.jpg", status: "Aman" },
+            { name: "Landak Sumatera", file: "landak-sumatera-mamalia.jpg", status: "Aman" },
+            { name: "Lutung Budeng", file: "lutung-budeng-mamalia.jpg", status: "Rentan" },
+            { name: "Macan Dahan", file: "macan-dahan-mamalia.jpg", status: "Rentan" },
+            { name: "Owa", file: "owa-mamalia.jpg", status: "Terancam" },
+            { name: "Pelanduk Kancil", file: "pelanduk-kancil-mamalia.jpg", status: "Data Kurang" },
+            { name: "Pelanduk Namu", file: "pelanduk-namu-mamalia.jpg", status: "Data Kurang" },
+            { name: "Rusa Sumbar", file: "rusa-sumbar-mamalia.jpg", status: "Rentan" },
+            { name: "Tapir Cipan", file: "tapir-cipan-mamalia.jpg", status: "Terancam" },
+            { name: "Trenggiling Peusing", file: "trenggiling-peusing-mamalia.jpg", status: "Kritis" }
+        ];
+
+        const grid = document.getElementById('speciesGrid');
+
+        mammals.forEach(m => {
+            // Determine status color
+            let statusClass = "bg-green-100 text-green-800";
+            if (m.status === "Kritis" || m.status === "Terancam") statusClass = "bg-red-100 text-red-800";
+            else if (m.status === "Rentan") statusClass = "bg-yellow-100 text-yellow-800";
+
+            const card = `
+                <div class="bg-white rounded-lg card-shadow shadow-xl overflow-hidden border-t-4 border-yellow-500 group hover:-translate-y-2 transition duration-500">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="images/mamalia/${m.file}" alt="${m.name}" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60 group-hover:opacity-40 transition"></div>
+                        <span class="absolute top-4 right-4 text-xs font-bold uppercase px-3 py-1 rounded shadow-md ${statusClass}">
+                            ${m.status}
+                        </span>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-xl font-bold uppercase text-gray-800 mb-2 font-display group-hover:text-green-700 transition">${m.name}</h3>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i data-lucide="paw-print" class="w-4 h-4 mr-2 text-yellow-500"></i> Mamalia
+                        </div>
+                    </div>
+                </div>
+            `;
+            grid.insertAdjacentHTML('beforeend', card);
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            handleFooter();
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

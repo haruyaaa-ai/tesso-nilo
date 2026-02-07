@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Ticket: Tesso Nilo National Park</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Oswald:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-display {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .ticket-card {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .ticket-stub {
+            background-color: white;
+            position: relative;
+            background-image: radial-gradient(circle at 0 50%, transparent 10px, white 11px), radial-gradient(circle at 100% 50%, transparent 10px, white 11px);
+            background-position: 0 0, 0 0;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+
+        .stub-line {
+            border-top: 2px dashed #cbd5e1;
+            margin: 0 16px;
+            position: relative;
+            top: -1px;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-green-50 flex items-center justify-center p-4 print:bg-white print:p-0">
+
+    <!-- Print Control & Back -->
+    <div class="fixed top-4 left-4 z-50 print:hidden flex gap-2">
+        <a href="riwayat.html"
+            class="bg-white p-3 rounded-full shadow-lg text-gray-600 hover:text-green-700 hover:bg-green-50 transition">
+            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+        </a>
+    </div>
+    <div class="fixed top-4 right-4 z-50 print:hidden">
+        <button onclick="window.print()"
+            class="bg-green-700 p-3 rounded-full shadow-lg text-white hover:bg-green-800 transition shadow-green-900/20">
+            <i data-lucide="printer" class="w-5 h-5"></i>
+        </button>
+    </div>
+
+    <!-- Ticket Container -->
+    <div id="loadingState" class="flex flex-col items-center animate-pulse">
+        <div class="w-16 h-16 bg-green-200 rounded-full mb-4"></div>
+        <div class="h-4 bg-green-200 rounded w-48"></div>
+    </div>
+
+    <div id="ticketContainer" class="hidden w-full max-w-sm mx-auto relative group">
+        <!-- Main Ticket Body -->
+        <div class="bg-white rounded-t-3xl overflow-hidden ticket-card relative z-10">
+            <!-- Header Image -->
+            <div class="h-32 bg-green-900 relative">
+                <img src="images/hero_premium.png" class="w-full h-full object-cover opacity-60 mix-blend-overlay">
+                <div class="absolute bottom-4 left-6">
+                    <p class="text-xs text-yellow-400 font-bold uppercase tracking-widest mb-1">Entrance Pass</p>
+                    <h1 class="text-3xl text-white font-bold font-display uppercase tracking-wider">Tesso Nilo</h1>
+                </div>
+            </div>
+
+            <!-- Details -->
+            <div class="p-8 pb-6">
+                <div class="flex justify-between items-center mb-6">
+                    <span
+                        class="bg-green-100 text-green-800 px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wide border border-green-200">
+                        Confirmed Access
+                    </span>
+                    <i data-lucide="trees" class="text-green-900 w-6 h-6"></i>
+                </div>
+
+                <div class="space-y-5">
+                    <div>
+                        <p class="text-[10px] text-gray-400 uppercase font-bold tracking-widest mb-1">Visitor Name</p>
+                        <p id="ticketName" class="text-lg font-bold text-gray-900 truncate">...</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-[10px] text-gray-400 uppercase font-bold tracking-widest mb-1">Date</p>
+                            <p id="ticketDate" class="text-sm font-bold text-gray-800">...</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-gray-400 uppercase font-bold tracking-widest mb-1">Start Time</p>
+                            <p class="text-sm font-bold text-gray-800">08:00 AM</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-gray-400 uppercase font-bold tracking-widest mb-1">Tickets</p>
+                            <p id="ticketQty" class="text-sm font-bold text-gray-800">...</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-gray-400 uppercase font-bold tracking-widest mb-1">Type</p>
+                            <p id="ticketType" class="text-sm font-bold text-gray-800">...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Perforation -->
+        <div class="w-full h-4 bg-white relative z-10 ticket-stub flex items-center">
+            <div class="stub-line w-full"></div>
+        </div>
+
+        <!-- QR Stub -->
+        <div class="bg-white rounded-b-3xl p-8 pt-2 pb-8 ticket-card text-center relative z-10">
+            <div class="bg-gray-900 p-4 rounded-xl inline-block mb-4 shadow-inner">
+                <img id="ticketQR" src="" class="w-32 h-32 bg-white rounded-lg p-1">
+            </div>
+
+            <p class="text-[10px] text-gray-400 uppercase font-bold tracking-widest mb-1">Booking ID</p>
+            <p id="ticketID" class="text-2xl font-display font-bold text-gray-900 tracking-widest">...</p>
+
+            <p class="text-[10px] text-gray-400 mt-6">Scan this QR code at the main gate.</p>
+        </div>
+
+        <!-- Decoration Glow behind -->
+        <div class="absolute -inset-4 bg-green-500/20 blur-xl rounded-[3rem] -z-0"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'api';
+        const urlParams = new URLSearchParams(window.location.search);
+        const bookingId = urlParams.get('id');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            if (!bookingId) {
+                alert('ID Tiket tidak valid');
+                window.location.href = 'riwayat.html';
+                return;
+            }
+            loadTicketDetails();
+        });
+
+        async function loadTicketDetails() {
+            try {
+                // Untuk demo/local, kalau session tidak jalan, read.php mungkin deny access.
+                // Tapi kita asumsikan session jalan.
+                const response = await fetch(`${API_BASE}/reservasi/read.php?id=${bookingId}`);
+                const result = await response.json();
+
+                if (result.success) {
+                    const data = result.data; // Note: read single returns object directly? or array? Check API logic.
+                    // Usually read.php returns array or single object depending on implementation.
+                    // Let's handle both.
+                    const ticket = Array.isArray(data) ? data[0] : data;
+
+                    if (!ticket) throw new Error('Tiket tidak ditemukan');
+
+                    if (ticket.status !== 'confirmed') {
+                        alert('Tiket belum dikonfirmasi');
+                        window.location.href = 'riwayat.html';
+                        return;
+                    }
+
+                    document.getElementById('ticketName').textContent = ticket.name || 'Visitor';
+                    document.getElementById('ticketQty').textContent = (ticket.tickets || 1) + ' Pax';
+                    document.getElementById('ticketType').textContent = (ticket.citizen_type || 'WNI').toUpperCase();
+
+                    const dateObj = new Date(ticket.date_booking);
+                    document.getElementById('ticketDate').textContent = dateObj.toLocaleDateString('en-GB', {
+                        day: 'numeric', month: 'short', year: 'numeric'
+                    });
+
+                    const idStr = 'TN-' + ticket.id.toString().padStart(5, '0');
+                    document.getElementById('ticketID').textContent = idStr;
+
+                    // QR
+                    const qrData = `VALID|${idStr}|${ticket.date_booking}`;
+                    document.getElementById('ticketQR').src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(qrData)}`;
+
+                    document.getElementById('loadingState').classList.add('hidden');
+                    document.getElementById('ticketContainer').classList.remove('hidden');
+                } else {
+                    throw new Error(result.message);
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Gagal memuat tiket: ' + err.message);
+                // window.location.href = 'riwayat.html';
+            }
+        }
+    </script>
+</body>
+
+</html>

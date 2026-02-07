@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informasi Pengunjung - Tesso Nilo National Park</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Oswald:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'forest': {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-display {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .hero-clip {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 antialiased flex flex-col min-h-screen">
+    <!-- Header Placeholder -->
+    <div id="mainHeader"></div>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative text-white min-h-[55vh] flex items-center pt-40 pb-32 hero-clip overflow-hidden"
+            style="background-color: #052e16;">
+            <div class="absolute inset-0 z-0">
+                <img src="images/hero_premium.png"
+                    class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-1000">
+                <div class="absolute inset-0 bg-gradient-to-b from-black/90 via-black/50 to-transparent"></div>
+            </div>
+            <div class="container mx-auto px-6 relative z-10 text-center">
+                <span
+                    class="text-yellow-400 font-bold tracking-[0.4em] uppercase mb-6 block text-xs drop-shadow-2xl">Panduan
+                    Wisata</span>
+                <h1
+                    class="text-6xl lg:text-9xl font-black uppercase tracking-tighter leading-none drop-shadow-[0_20px_20px_rgba(0,0,0,0.8)]">
+                    Informasi <span class="text-green-600 font-display">Pengunjung</span>
+                </h1>
+            </div>
+        </section>
+
+        <!-- Navigation Tabs -->
+        <div class="container mx-auto px-6 -mt-8 relative z-30">
+            <div
+                class="bg-white rounded-3xl shadow-2xl p-3 flex flex-col md:flex-row justify-center gap-3 max-w-4xl mx-auto border border-gray-100">
+                <button onclick="showSection('rules')" id="tab-rules"
+                    class="tab-btn active px-10 py-5 rounded-2xl font-black uppercase text-xs tracking-[0.2em] transition-all flex items-center justify-center gap-3">
+                    <i data-lucide="shield-check" class="w-5 h-5"></i> Aturan
+                </button>
+                <button onclick="showSection('map')" id="tab-map"
+                    class="tab-btn px-10 py-5 rounded-2xl font-black uppercase text-xs tracking-[0.2em] transition-all flex items-center justify-center gap-3">
+                    <i data-lucide="map" class="w-5 h-5"></i> Peta Kawasan
+                </button>
+                <button onclick="showSection('contact')" id="tab-contact"
+                    class="tab-btn px-10 py-5 rounded-2xl font-black uppercase text-xs tracking-[0.2em] transition-all flex items-center justify-center gap-3">
+                    <i data-lucide="phone-call" class="w-5 h-5"></i> Kontak Darurat
+                </button>
+            </div>
+        </div>
+
+        <!-- Content Sections -->
+        <div class="container mx-auto px-6 py-20 max-w-5xl">
+
+            <!-- Rules Section -->
+            <div id="section-rules" class="content-section space-y-12">
+                <div class="text-center">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4 uppercase">Aturan & Kode Etik</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto italic font-medium leading-relaxed">
+                        Kami sangat menghargai kerja sama Anda dalam menjaga kelestarian alam. Mohon patuhi aturan
+                        berikut untuk keselamatan bersama dan kenyamanan satwa.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-10 rounded-3xl shadow-lg border-l-8 border-forest-600 flex gap-6">
+                        <div class="w-12 h-12 bg-forest-50 rounded-2xl flex items-center justify-center shrink-0">
+                            <i data-lucide="trash-2" class="w-6 h-6 text-forest-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2 uppercase">Tanpa Sampah</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">Bawa kembali sampah Anda. Membuang sampah
+                                di area hutan dapat membahayakan satwa liar.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-10 rounded-3xl shadow-lg border-l-8 border-forest-600 flex gap-6">
+                        <div class="w-12 h-12 bg-forest-50 rounded-2xl flex items-center justify-center shrink-0">
+                            <i data-lucide="mic-off" class="w-6 h-6 text-forest-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2 uppercase">Ketenangan Area</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">Dilarang membuat kebisingan berlebih,
+                                memainkan musik keras, atau mengejutkan satwa liar.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-10 rounded-3xl shadow-lg border-l-8 border-forest-600 flex gap-6">
+                        <div class="w-12 h-12 bg-forest-50 rounded-2xl flex items-center justify-center shrink-0">
+                            <i data-lucide="camera-off" class="w-6 h-6 text-forest-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2 uppercase">Aturan Fotografi</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">Dilarang menggunakan flash saat memotret
+                                satwa di malam hari atau zona sensitif tertentu.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-10 rounded-3xl shadow-lg border-l-8 border-forest-600 flex gap-6">
+                        <div class="w-12 h-12 bg-forest-50 rounded-2xl flex items-center justify-center shrink-0">
+                            <i data-lucide="flame-kindling" class="w-6 h-6 text-forest-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2 uppercase">Waspada Api</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">Dilarang menyalakan api unggun di area
+                                sembarangan. Gunakan area yang telah disediakan secara khusus.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div id="section-map" class="content-section hidden space-y-12">
+                <div class="text-center">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4 uppercase">Peta Kawasan & Jalur</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto italic font-medium leading-relaxed">
+                        Navigasi mandiri dengan panduan digital. Pastikan Anda tetap berada di jalur yang telah
+                        ditandai.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-white p-4 rounded-[2rem] shadow-2xl overflow-hidden border-4 border-gray-100 h-[600px] relative">
+                    <iframe
+                        src="https://maps.google.com/maps?q=Taman+Nasional+Tesso+Nilo&t=k&z=11&ie=UTF8&iwloc=&output=embed"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                    <div
+                        class="absolute bottom-10 right-10 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 max-w-xs">
+                        <h4 class="font-bold text-forest-800 mb-2 uppercase text-xs tracking-widest">Titik Penting</h4>
+                        <ul class="text-[11px] space-y-2 text-gray-600">
+                            <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-red-500"></span>
+                                Pusat Informasi (Gate 1)</li>
+                            <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                                Area Camp Lubuk Kembang Bunga</li>
+                            <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+                                Flying Squad Elephant House</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div id="section-contact" class="content-section hidden space-y-12">
+                <div class="text-center">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4 uppercase">Kontak Darurat</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto italic font-medium leading-relaxed">
+                        Kami siap melayani Anda 24/7 untuk situasi darurat di dalam kawasan.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Pos Reskrim -->
+                    <div
+                        class="bg-white p-10 rounded-[2rem] shadow-xl flex flex-col items-center text-center border border-gray-100 hover:shadow-2xl transition-all duration-500">
+                        <div class="w-16 h-16 bg-yellow-50 rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="phone" class="w-8 h-8 text-yellow-600"></i>
+                        </div>
+                        <h3 class="font-bold uppercase mb-2 text-gray-400 text-xs tracking-[0.2em]">Pos Reskrim</h3>
+                        <p class="text-2xl font-black text-gray-900 tracking-tight">0812-761-XXXX</p>
+                        <p class="text-xs text-gray-500 mt-4 italic">Hubungi untuk pelaporan tindak kejahatan hutan atau
+                            perburuan liar.</p>
+                    </div>
+
+                    <!-- Tim Medis -->
+                    <div
+                        class="bg-white p-10 rounded-[2rem] shadow-xl flex flex-col items-center text-center border border-gray-100 hover:shadow-2xl transition-all duration-500">
+                        <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="heart-pulse" class="w-8 h-8 text-red-600"></i>
+                        </div>
+                        <h3 class="font-bold uppercase mb-2 text-gray-400 text-xs tracking-[0.2em]">Tim Medis</h3>
+                        <p class="text-2xl font-black text-gray-900 tracking-tight">0811-222-XXXX</p>
+                        <p class="text-xs text-gray-500 mt-4 italic">Layanan darurat kesehatan dan evakuasi pengunjung
+                            di area taman.</p>
+                    </div>
+
+                    <!-- WhatsApp Official -->
+                    <div
+                        class="bg-white p-10 rounded-[2rem] shadow-xl flex flex-col items-center text-center border border-gray-100 hover:shadow-2xl transition-all duration-500">
+                        <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="message-square" class="w-8 h-8 text-blue-600"></i>
+                        </div>
+                        <h3 class="font-bold uppercase mb-2 text-gray-400 text-xs tracking-[0.2em]">WhatsApp Official
+                        </h3>
+                        <p class="text-2xl font-black text-gray-900 tracking-tight">0852-333-XXXX</p>
+                        <p class="text-xs text-gray-500 mt-4 italic">Informasi umum, pengaduan layanan, dan bantuan
+                            navigasi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="mainFooter"></div>
+
+    <script src="main.js?v=2.4"></script>
+    <script>
+        function showSection(sectionId) {
+            // Update buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                // Reset to inactive state: transparent bg with dark text
+                btn.classList.remove('bg-green-600', 'text-white', 'shadow-xl');
+                btn.classList.add('bg-transparent', 'text-gray-900');
+            });
+
+            // Set active state: green bg with white text
+            const activeBtn = document.getElementById('tab-' + sectionId);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-transparent', 'text-gray-900');
+                activeBtn.classList.add('bg-green-600', 'text-white', 'shadow-xl');
+            }
+
+            // Show sections
+            document.querySelectorAll('.content-section').forEach(sec => sec.classList.add('hidden'));
+            const activeSec = document.getElementById('section-' + sectionId);
+            if (activeSec) activeSec.classList.remove('hidden');
+
+            // Re-init lucide to ensure icon colors match text
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+
+            // Update URL hash
+            history.replaceState(null, null, '#' + sectionId);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check hash in URL
+            const handleHash = () => {
+                const hash = window.location.hash.replace('#', '');
+                if (hash === 'rules' || hash === 'map' || hash === 'contact') {
+                    showSection(hash);
+                } else {
+                    showSection('rules');
+                }
+            };
+
+            window.addEventListener('hashchange', handleHash);
+            handleHash();
+
+            handleFooter();
+            lucide.createIcons();
+        });
+    </script>
+    <style>
+        /* CSS removed to let JS handle dynamic states purely via classes */
+    </style>
+</body>
+
+</html>
